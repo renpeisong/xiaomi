@@ -1,0 +1,37 @@
+{
+  "id": "3185617",
+  "name": "guigu",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "27608658",
+      "name": "comment_minus",
+      "font_class": "comment_minus",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "27608659",
+      "name": "comment",
+      "font_class": "comment",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "27608660",
+      "name": "comment_check",
+      "font_class": "comment_check",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "27608661",
+      "name": "copy",
+      "font_class": "copy",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    }
+  ]
+}

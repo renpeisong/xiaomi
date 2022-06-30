@@ -1,0 +1,452 @@
+/*index.html独有的样式表*/
+/*顶部导航条的容器*/
+.topbar-wrapper{
+    /*设置宽度*/
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #333;
+}
+/*设置超链接的颜色*/
+.topbar a{
+    font-size: 12px;
+    color: #b0b0b0;
+    display: block;/*设置超链接成块元素，鼠标移入块都可以点击，不仅仅是链接可点击*/
+}
+/*设置鼠标移入变颜色*/
+.topbar a:hover{
+    color: #fff;/*伪类选择器，可以用类解决的     伪元素 ，只能套一个元素才能完成*/
+}
+/*设置竖线*/
+.topbar .line{
+    font-size: 12px;
+    color: #424242;
+    margin: 0 8px;
+    margin-top: -2px;
+}
+
+/*设置左侧导航条,逗号表示并集选择器，即选中a又选中b*/
+.service, .topbar li {
+float: left;
+}
+/*父元素设置一个相对定位*/
+.app{
+    position: relative;
+}
+/*设置app下的小三角*/
+.app::after{
+    /*默认情况隐藏起来*/
+    display: none;
+    /*开启绝对定位*/
+    position: absolute;
+    content: '';
+   /* display: block;绝对定位脱离文档流*/
+    width: 0;
+    height: 0;
+    /*设置四个方向的边框*/
+    border: 7px solid transparent;
+    /*去除上边框*/
+    border-top: none;
+    /*设置下边框颜色*/
+    border-bottom-color:white;
+    /*定位数据，使其居中*/
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.app:hover .qrcode,.app:hover::after{/*           意思是apphover状态下的after元素*/
+    display: block;
+    /*display：148px*/
+}
+/*设置下载APP的下拉*/
+.app .qrcode{
+    /*弹出层不应该在父元素占据位置，开启绝对定位*/
+    position: absolute;
+    /*隐藏起来*/
+    display: none;
+    left: -40px;
+    width: 124px;
+    height: 148px;
+    /*height：0px  另一种写法高度隐藏
+    overflow:hidden 溢出裁剪，然后鼠标移入把高度显示出来同样可以，这种方法可以添加过度动画效果
+    */
+    background-color:#fff;
+    line-height: 1;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0, 0,.3);
+    /*transition：用于为我们样式设置过度效果
+    transition：height 3s；（花三秒动画长度过度效果）
+    */
+    z-index: 9999;
+}
+
+/*设置二维码尺寸*/
+.app .qrcode img{
+    width: 90px;
+    margin:17px 17px;/*不可以设置auto，img即是行内元素又是块元素*/
+    margin-bottom: 10px;
+}
+/*设置二维码下面文字*/
+.app .qrcode span{
+    color: #000;
+    font-size: 14px;
+}
+/*设置右侧导航条*/
+.shop-cart, .user-info{
+    float: right;
+}
+/*设置购物车的样式*/
+.shop-cart a{
+    width: 120px;
+    background-color: #424242;
+    text-align: center;
+}
+
+.shop-cart i{
+    margin-right: 2px;
+}
+.shop-cart:hover a{
+    background-color: #fff;
+    color: #ff6700;
+}
+.shop-cart{
+    margin-left: 25px;
+}
+
+
+
+
+/*外部容器格式*/
+.header-wrapper{
+    
+    position: relative;
+}
+
+/*设置中间的header*/
+.header{
+    height: 100px;
+
+}
+/*装品牌标签的容器*/
+.header .logo{
+    float: left;
+    margin-top: 22px;
+    width: 55px;
+    height: 55px; 
+    position: relative;
+    overflow: hidden;
+    text-indent: -99999px;/*首行缩进 原来的空间位置还会占着*/
+}
+.header .logo a{
+    /*开启绝对定位同层级，靠下面的覆盖靠上面的，home在下miui在上*/
+   position: absolute;
+    width: 55px;
+    height: 55px;
+    background-color:#ff6700;
+    background-image: url(../img/mi-logo.png);
+    background-position: center;
+    transition: left 0.3s;/*设置动画效果，只能从某个值到某个值，left0~left55，浏览器没办法从auto到55*/
+left: 0;
+}
+/*home左移*/
+.header .logo .home{
+    background-image: url(../img/mi-home.png);
+    left: -55px;/*隐藏起来了*/
+}
+.header .logo:hover .MIUI{
+    left: 55px;
+}
+.header .logo:hover .home{
+    left: 0;/*home从-55移动到0*/
+}
+
+
+
+/*设置导航条*/
+.header .nav{
+    /*不设置宽度内容撑开*/
+ 
+    height: 100px;
+    line-height: 100px;/*文字行高和高度一样会使文字垂直居中*/
+    padding-left: 58px;
+}
+/*设置中间导航条*/
+.header .nav-wrapper{
+    float: left;
+    margin-left: 7px;
+}
+/*设置导航条中的直接子元素li，子元素的子元素也就是后代元素选不到*/
+.nav > li{
+    float: left;
+}
+.nav>li a{
+    display: block;
+    font-size: 16px;
+    margin-right: 20px;
+}
+/*隐藏全部商品*/
+.all-good{
+    /*display: none;不能用display none 不占位置，隐藏就不占位置*/
+    visibility: hidden;/*隐藏但占位置 布局文件夹 元素盒模型*/
+}
+/*left-menu的父元素*/
+.all-goods-wrapper{
+position: relative;
+
+}
+/*设置左侧导航条的样式*/
+.left-menu{
+    width: 234px;
+    height: 420px;
+    background-color: rgba(0, 0, 0, .6);
+    position: absolute;
+    z-index: 999;
+    left: -120px;
+    line-height: 0;
+    padding: 20px 0;
+}
+/*设置超链接*/
+ul.left-menu li a{
+    display: block;
+    height: 42px;
+    line-height: 42px;/*设置三角浮动之后行高对小三角没用，这时小三角是浮动行内块元素*/
+    color: white;
+    margin-right: 0;
+    padding: 0 30px;
+    font-size: 14px;
+}
+/*设置鼠标移入背景变颜色*/
+ul.left-menu li a:hover{
+    color: white;
+    background-color: #ff6700;
+}
+/*设置小三角*/
+.left-menu a i{
+    float: right;
+    line-height: 42px;
+    
+}
+
+.nav .good-info{
+    height: 0;
+    overflow: hidden;
+    background-color:#fff;/*小米手机哪一行脱离文档流所以元素上去*/
+    position: absolute;/*相对于headr-wraaper开启相对定位比较好，*/
+    width:100%;/*宽度是参考包含块，也就是开启相对定位那个*/
+    top: 100px;
+    left: 0;/*为什么米哪里有个空格，因为ul设置了内边距，good-info在ul里面*/
+    transition: height 0.3s;
+    z-index: 9999;
+   /* box-shadow: 0 5px 3px rgba(0, 0, 0, .3);
+    border-top: 1px solid rgb(224, 224, 224);*/
+}
+/*优先级也很重要，上面和下面都选择器选择了good-info按照优先级靠下面的覆盖上面，所以两者不能颠倒顺序*/
+
+/*兄弟元素不能写+,+只是选择一个 ~选择后面所有兄弟元素*/
+/*-n+8的意思n最少为0永远取不到九和十  n+2意思是永远取不到1  */
+.nav li:nth-child(-n+8):nth-child(n+2):hover ~.good-info,
+.good-info:hover
+{/*鼠标在.nav li状态时选中li后面所有good-info兄弟元素*/
+    height: 228px;
+    border-top: 1px solid rgb(224, 224, 224);
+    box-shadow: 0 5px 3px rgba(0, 0, 0, .2);
+   
+}
+.nav > li:hover > a{
+    color: #ff6700;
+}
+.search-wrapper{
+    width: 296px;
+    height: 50px;
+    background-color: red;
+    float: right;/*mi和中间位置都脱离了文档流，这地方不脱离文档流就会导致文档上去，同属于头部容器的子元素*/
+    margin-top: 25px;
+  
+}
+/*行内块元素浮动，和块元素浮动特点一样*/
+         .search-wrapper .search-inp{
+             box-sizing: border-box;
+             float: left;
+             padding: 0 10px;/*去除默认样式*/
+             height: 50px;
+             border:none;
+             width: 244px;
+             font-size: 16px;  
+             border: 1px solid rgb(224, 224, 224);
+             outline: none;    
+         }  
+         /* 获取焦点后加轮廓线 伪类focus，针对表单点击就是获取焦点*/
+         .search-wrapper .search-inp:focus,.search-wrapper .search-inp:focus+button{
+             border-color: #ff6700;
+         }
+         .search-wrapper .search-btn{
+             float: left;
+             /*这个按钮默认有一个值，是 box-sizing: border-box表示height和width设置的连同外边距的大小*/
+             height: 50px;
+             width: 52px;
+             padding: 0;
+             border: none;
+            border: 1px solid rgb(224, 224, 224);
+             background-color: #fff;
+             color: #616161;
+             font-size: 16px;
+             border-left: none;
+          
+         }   
+
+.search-wrapper .search-btn:hover{
+    background-color: #ff6700;
+    color: white;
+    border: none;
+}
+/*outline-offset可以设置轮廓线的偏移量*/
+
+
+.banner{
+    position: relative;
+    height: 460px;/*为什么给它指定高度，因为它里面的图片全部脱离文档流他高度塌陷了没有高度*/
+}
+.banner .img-list li{
+    position: absolute;/*宽度会失效，包含块不知道是谁不明确*/
+}
+.banner img{
+    width: 100%;
+    vertical-align: bottom;/*图片和文字属性相似默认会有一个空白边框不会，设置这个底部对齐盖住边框*/
+}
+.img-list li:nth-child(1){
+    z-index: 20;
+}
+/*设置五个导航点*/
+.pointer{
+    position: absolute;
+    z-index: 50;
+    bottom: 22px;
+    right: 35px;
+
+}
+.pointer a{
+    float: left;
+    width: 6px;
+    height: 6px;
+    background-color: rgba(0, 0, 0, .4);
+    border: 2px rgba(255, 255, 255, .4) solid;
+     border-radius: 50%;
+     margin-left: 6px;
+}
+.pointer a:hover,.pointer a.active{
+    border-color:  rgba(0, 0, 0, .4);
+    background-color:rgba(255, 255, 255, .4) ;
+}
+/*设置两个箭头，用雪碧图*/
+.prev-next a{
+    width: 41px;/*首先量取要用的那一部分图大小尺寸*/
+    height: 69px;
+    
+    position: absolute;
+    z-index: 55;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    background-image: url(../img/icon-slides.png);/*引入雪碧图*/
+}
+.prev-next .prev{
+left: 234px;
+background-position:-84px 0 ;/**/
+}
+.prev-next .prev:hover{
+    background-position: 0 0;
+}
+.prev-next .next{
+    right: 0;
+    background-position: -125px 0;/*前面表示左偏移量后面表示上偏移量*/
+}
+.prev-next .next:hover{
+    background-position: -42px 0;
+}
+/*设置一个回到顶部*/
+.back-top{
+    width: 26px;
+    height: 206px;
+    
+    /*开启固定定位，开启固定定位固定在页面一个位置，固定定位相对于视口定位*/
+    position: fixed;
+    bottom: 100px;/*不能直接设置right，视口大小会随着用户窗口变*/
+    right: 50%;
+    margin-right: -639px;
+/*布局等式
+left+margin-left+widt+margin-right+right=视口的宽度
+auto+0+26+0+50%=视口宽度
+设置margin-right之后的计算
+auto(还要加639px)+0+26+0+50%
+left 的auto是浏览器自动加上去的随着视口增大减小改变，满足等式还要再把那个负的补正就可以使回到顶部移动到边上
+*/
+}
+.ad{
+   
+    height: 170px;
+    margin-top: 14px;
+}
+.ad .short-cut,.ad .imgs,.ad li{
+    float: left;
+}
+/*设置左侧快捷方式*/
+.ad .short-cut{
+    width: 234px;
+    height: 170px;
+    background-color: #5f5750;
+    margin-right: 14px;
+ 
+/*设置里面字体颜色等等,快捷方式里面的超链接
+*/
+.ad .short-cut a{
+    display: block;
+    color: #cfccca;
+    height: 84px;
+    width: 76px;
+    text-align: center;
+    font-size: 12px;
+    overflow: hidden;/*开启bfc不会外边距重叠*/
+}
+/*设置左侧快捷的上边框*/
+.ad .short-cut li::before{
+    content:'' ;
+    position: absolute;
+    width: 64px;
+    height: 1px;
+    background-color:#665e57;
+    left: 0;
+    top: 0;
+    margin: 0 auto;
+    right: 0;
+}
+/*设置一个参考相对定位*/
+.ad .short-cart li{
+    position: relative;
+}
+.ad .short-cut a:hover{
+    color: #fff;
+}
+/*设置图标字体*/
+.ad .short-cut i{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    margin-bottom:6px ;
+}
+
+/*设置左侧图片*/
+.ad .imgs li{
+    width: 316px;
+    margin-right: 15px;
+    
+}
+.ad .imgs img{
+    width: 100%;
+    vertical-align: top;
+}
+.ad .imgs li:last-child{
+    margin: 0;
+}

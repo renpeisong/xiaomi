@@ -1,0 +1,25 @@
+.clearfix::before,
+.clearfix::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+/*去除下划线*/
+a{
+    text-decoration: none;
+    color: #333;
+}
+body{
+    font:14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif; 
+    color: #333;
+    min-width: 1226px;/*最低宽度1226px，可以随着浏览器窗口变大不能小*/
+}
+/*专门设置一个类，用来表示中间容器的宽度*/
+.w{
+    width: 1226px;
+    /*设置容器居中，上下外边距为零，左右外边距平均分配*/
+    margin: 0 auto;
+   }
+
+
+
